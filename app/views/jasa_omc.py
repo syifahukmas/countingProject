@@ -31,21 +31,37 @@ df = pd.read_excel("database/data_gabungan_sdm1.xlsx", header=1)
 # ==================================================== #
 # ==================== Input Data ==================== #
 # ==================================================== #
+# today = datetime.date.today()
+# tanggal_range = st.date_input(
+#     "Tanggal Pelaksanaan",
+#     (today, today + datetime.timedelta(days=6)),  # default 7 hari
+#     min_value=today,
+#     format="DD.MM.YYYY",
+# )
+
+# # Hitung jumlah hari
+# jh_keseluruhan = None
+# if isinstance(tanggal_range, tuple) and len(tanggal_range) == 2:
+#     start_date, end_date = tanggal_range
+#     jh_keseluruhan = (end_date - start_date).days + 1
+#     st.info(f"Pelaksanaan: {start_date} s/d {end_date} ({jh_keseluruhan} hari)")
+
 today = datetime.date.today()
-tanggal_range = st.date_input(
-    "Tanggal Pelaksanaan",
-    (today, today + datetime.timedelta(days=6)),  # default 7 hari
+
+# hanya pilih tanggal mulai, bukan range
+start_date = st.date_input(
+    "Tanggal Mulai Pelaksanaan ",
+    today,
     min_value=today,
     format="DD.MM.YYYY",
 )
+jumlah_input_hari=st.number_input("Masukkan Jumlah Hari :  ", step=1)
+# otomatis tentukan end_date supaya total 7 hari
+end_date = start_date + datetime.timedelta(days=jumlah_input_hari)
 
-# Hitung jumlah hari
-jh_keseluruhan = None
-if isinstance(tanggal_range, tuple) and len(tanggal_range) == 2:
-    start_date, end_date = tanggal_range
-    jh_keseluruhan = (end_date - start_date).days + 1
-    st.info(f"Pelaksanaan: {start_date} s/d {end_date} ({jh_keseluruhan} hari)")
+jh_keseluruhan=jumlah_input_hari
 
+st.info(f"Pelaksanaan: {start_date} s/d {end_date} ({jh_keseluruhan} hari)")
 # === Input Provinsi ===
 provinsi = st.selectbox(
     "Tempat Pelaksanaan (Provinsi)",
@@ -101,8 +117,8 @@ elif jenis_pesawat == "Pesawat TNI":
 # ==================== Variabel Fix =================== #
 # ===================================================== #
 # Jumlah Personel Lengkap
-jumlah_personel_tim_pengawas = 6 # FIX, edit jika berubah
-jumlah_personel_supervisi_pimpinan = 6
+jumlah_personel_tim_pengawas = 3 # FIX, edit jika berubah
+jumlah_personel_supervisi_pimpinan = 3
 jumlah_personel_observer_cuaca = 6
 jumlah_personel_pendukung_posko = 6
 jumlah_personel_tim_pelaksana = safe_subtract(
@@ -116,7 +132,7 @@ jumlah_personel_tim_pelaksana = safe_subtract(
 # Formasi Personel Pelengkap
 jumlah_personel_koordinasi_awal = 6 # FIX, edit jika berubah
 jumlah_personel_instalasi_posko = 2
-jumlah_personel_supervisi_pimpinan = 6
+# jumlah_personel_supervisi_pimpinan = 3
 jumlah_personel_uninstall_posko = 2
 jumlah_personel_pendukung_posko = 6
 jumlah_personel_penyusun_laporan_akhir = 12
@@ -274,6 +290,7 @@ else:
     jam_terbang_operasi, biaya_alutsista_pesawat_selama_operasi = alutsista_pesawat_selama_operasi(
         mode, jh_keseluruhan, jumlah_liter, harga_avtur_per_liter)
 
+jam_terbang_total = jam_terbang_operasi * jh_keseluruhan
 # Modifikasi dan inspeksi pesawat before - after rain making 
 harga_paket_modifikasi_inspeksi = 140000000
 biaya_modifikasi_dan_inspeksi_pesawat = modifikasi_dan_inspeksi_pesawat(harga_paket_modifikasi_inspeksi, jumlah_paket, jumlah_kali_paket)
@@ -304,14 +321,16 @@ biaya_sewa_gedung = sewa_gedung(jh_keseluruhan, jumlah_paket, harga_paket_sewa_g
 # ========== Ekspedisi ========== #
 # Ekspedisi Peralatan
 
+biaya_kirim = row['pengiriman_bahan_semai'].values[0]
+
 total_berat_peralatan = 3000 # 
-biaya_per_kg_peralatan = 4000 # Tergantung daerahnya
+# biaya_per_kg_peralatan = 4000 # Tergantung daerahnya
 
-total_berat_bahan_semai = 16000
-biaya_per_kg_bahan_semai = 4000 # Tergantung daerahnya
+total_berat_bahan_semai = 1600 * jh_keseluruhan
+# biaya_per_kg_bahan_semai = 4000 # Tergantung daerahnya
 
-biaya_ekspedisi_peralatan = biaya_ekspedisi(total_berat_peralatan, biaya_per_kg_peralatan, 2)
-biaya_ekspedisi_bahan_semai = biaya_ekspedisi(total_berat_bahan_semai, biaya_per_kg_bahan_semai, p)
+biaya_ekspedisi_peralatan = biaya_ekspedisi(total_berat_peralatan, biaya_kirim, 2)
+biaya_ekspedisi_bahan_semai = biaya_ekspedisi(total_berat_bahan_semai, biaya_kirim, p)
 
 # ========== Dukungan teknis operasional di lapangan ========== #
 uang_harian_dukungan_teknis = row['konsumsi_rapat'].values[0]
@@ -409,7 +428,7 @@ data += [
     ["1. Bahan Semai", jumlah_kg, "Kg", jh_keseluruhan, "hari", harga_per_kg, biaya_harga_bahan_semai_NaCl],
     ["2. Alutsista Pesawat TNI", "", "", "", "", "", ""],
     ["a. Penggantian Avtur untuk Mob - Demob", jam_mobdemob, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_penggantian_avtur_pesawat],
-    ["b. Selama Operasi", jam_terbang_operasi, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_alutsista_pesawat_selama_operasi],
+    ["b. Selama Operasi", jam_terbang_total, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_alutsista_pesawat_selama_operasi],
     ["c. Modifikasi dan inspeksi pesawat before - after rain making ", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_paket_modifikasi_inspeksi, biaya_modifikasi_dan_inspeksi_pesawat],
     ["3. Kebutuhan Operasional Lapangan", "", "", "", "", "", ""],
     ["a. Sewa Kendaraan", "", "", "", "", "", ""],
@@ -419,8 +438,8 @@ data += [
     ["b. Peralatan dan Pendukung lapangan (ATK dan  Rompi Safety)", jumlah_paket, "paket", jh_keseluruhan, "hari", harga_peralatan_dan_pendukung_lapangan, biaya_peralatan_dan_pendukung_lapangan],
     ["c. Sewa Ruangan untuk Posko dan Gudang Bahan Semai", jumlah_paket, "paket", jh_keseluruhan, "hari", harga_paket_sewa_gedung, biaya_sewa_gedung],
     ["d. Ekspedisi", "", "", "", "", "", ""],
-    ["     Peralatan", total_berat_peralatan, "kg", pp, "PP", biaya_per_kg_peralatan, biaya_ekspedisi_peralatan],
-    ["     Bahan Semai", total_berat_bahan_semai, "kg", p, "P", biaya_per_kg_bahan_semai, biaya_ekspedisi_bahan_semai],
+    ["     Peralatan", total_berat_peralatan, "kg", pp, "PP", biaya_kirim, biaya_ekspedisi_peralatan],
+    ["     Bahan Semai", total_berat_bahan_semai, "kg", p, "P", biaya_kirim, biaya_ekspedisi_bahan_semai],
     ["e. Dukungan teknis operasional di lapangan", jumlah_paket, "orang", jh_keseluruhan, "hari", uang_harian_dukungan_teknis, biaya_dukungan_teknis_operasional_di_lapangan],
     ["f. Stanby  Air mobil  Pemadam Kebakaran dan untuk Cuci Pesawat", jumlah_paket, "paket", jh_keseluruhan, "hari", harga_air_mobil_pk_cuci_pesawat, biaya_air_mobil_pk_cuci_pesawat],
     ["C. Pelaporan", "", "", "", "", "", ""],
