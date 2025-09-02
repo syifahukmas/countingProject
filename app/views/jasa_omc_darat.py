@@ -34,20 +34,19 @@ df = pd.read_excel("database/data_gabungan_sdm1.xlsx", header=1)
 today = datetime.date.today()
 
 # hanya pilih tanggal mulai, bukan range
-tanggal_range = st.date_input(
-    "Tanggal Pelaksanaan",
-    (today, today + datetime.timedelta(days=6)),  # default 7 hari
+start_date = st.date_input(
+    "Tanggal Mulai Pelaksanaan ",
+    today,
     min_value=today,
     format="DD.MM.YYYY",
 )
+jumlah_input_hari=st.number_input("Masukkan Jumlah Hari :  ", step=1)
+# otomatis tentukan end_date supaya total 7 hari
+end_date = start_date + datetime.timedelta(days=jumlah_input_hari)
 
-# Hitung jumlah hari
-jh_keseluruhan = None
-if isinstance(tanggal_range, tuple) and len(tanggal_range) == 2:
-    start_date, end_date = tanggal_range
-    jh_keseluruhan = (end_date - start_date).days + 1
-    st.info(f"Pelaksanaan: {start_date} s/d {end_date} ({jh_keseluruhan} hari)")
+jh_keseluruhan=jumlah_input_hari
 
+st.info(f"Pelaksanaan: {start_date} s/d {end_date} ({jh_keseluruhan} hari)")
 # === Input Provinsi ===
 provinsi = st.selectbox(
     "Tempat Pelaksanaan (Provinsi)",
