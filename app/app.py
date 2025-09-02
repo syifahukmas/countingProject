@@ -2,6 +2,12 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+col1, col2 = st.columns([1, 3])  # Kolom kiri kecil, kolom kanan besar
+with col1:
+    st.image("app/assets/logo.png", width=150)  # Logo di kiri atas
+with col2:
+    st.write("")  # Kolom kanan kosong atau bisa isi konten lain
+
 # === Page Setup ===
 jasa_omc = st.Page(
     page="views/jasa_omc.py",
