@@ -42,10 +42,11 @@ pg = st.navigation({
     "Layanan Modifikasi Cuaca": [jasa_omc, kelayakan, survey, omc_darat,  supervisi]
 })
 
-# === Info Kontak di Sidebar ===
+# === Sidebar ===
 with st.sidebar:
     st.markdown("### Situs Resmi Lainnya")
-    st.markdown("📧 https://link.bmkg.go.id/d-sm-")
-    st.markdown("📱 http://belgaman.infy.uk/omc/statistik")
+    st.markdown("[D-SM BMKG](https://link.bmkg.go.id/d-sm-)")
+    st.markdown("[OMC Statistik](http://belgaman.infy.uk/omc/statistik)")
+
 
 pg.run()
