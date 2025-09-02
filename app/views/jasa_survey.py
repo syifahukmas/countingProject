@@ -35,7 +35,7 @@ today = datetime.date.today()
 
 # hanya pilih tanggal mulai, bukan range
 start_date = st.date_input(
-    "Tanggal Mulai Pelaksanaan (Otomatis 7 Hari Pelaksanaan)",
+    "Tanggal Mulai Pelaksanaan",
     today,
     min_value=today,
     format="DD.MM.YYYY",
