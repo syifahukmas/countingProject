@@ -42,4 +42,11 @@ pg = st.navigation({
     "Layanan Modifikasi Cuaca": [jasa_omc, kelayakan, survey, omc_darat,  supervisi]
 })
 
+st.set_page_config(
+    page_title="Contact: email : tu5@bmkg.go.id whatsapp : 081266714492",
+    page_icon="🌧️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 pg.run()
