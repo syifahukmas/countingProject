@@ -44,9 +44,8 @@ pg = st.navigation({
 
 # === Sidebar ===
 with st.sidebar:
-    st.markdown("### Situs Resmi Lainnya")
-    st.markdown("[D-SM BMKG](https://link.bmkg.go.id/d-sm-)")
-    st.markdown("[OMC Statistik](http://belgaman.infy.uk/omc/statistik)")
-
+    st.markdown("### Informasi Modifikasi Cuaca")
+    st.markdown("[Dasbor Historis Kegiatan OMC (2014-2025)](http://belgaman.infy.uk/omc/statistik)")
+    st.markdown("[Sarana dan Prasarana Modifikasi Cuaca](https://link.bmkg.go.id/d-sm-)")
 
 pg.run()
