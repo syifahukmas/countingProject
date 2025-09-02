@@ -44,8 +44,8 @@ pg = st.navigation({
 
 # === Info Kontak di Sidebar ===
 with st.sidebar:
-    st.markdown("### Contact Info")
-    st.markdown("📧 Email: tu5@bmkg.go.id")
-    st.markdown("📱 WhatsApp: 081266714492")
+    st.markdown("### Situs Resmi Lainnya")
+    st.markdown("📧 https://link.bmkg.go.id/d-sm-")
+    st.markdown("📱 http://belgaman.infy.uk/omc/statistik")
 
 pg.run()
