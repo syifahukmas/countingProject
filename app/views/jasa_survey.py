@@ -227,14 +227,14 @@ data = [
     ["Provinsi " + provinsi, "", "", "", "", "", ""],
     ["A. Personil Pelaksana", "", "", "", "", "", ""],
 
-    ["1. Survey Lokasi Menara GBG", "", "", "", "", "", ""],
+    ["1. Survey Lokasi Wahana Penyemai Awan dari Darat", "", "", "", "", "", ""],
     ["     Uang Harian", jumlah_personel_survey_lokasi, "orang", jh_uh_survey_lokasi, "hari", uang_harian_luar_kota, uh_survey_lokasi],
     ["     Biaya Penginapan", jumlah_personel_survey_lokasi, "orang", jh_penginapan_survey_lokasi, "hari", harga_penginapan_ktg3, biaya_penginapan_survey_lokasi],
     ["     Biaya Tiket ", jumlah_personel_survey_lokasi, "orang", pp, "pp", biaya_tiket, biaya_tiket_survey_lokasi],
     ["     Taksi", jumlah_personel_survey_lokasi, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_survey_lokasi],
     ["     Jasa Konsultasi Meteorologi dan Klimatologi", jumlah_lokasi, "lokasi", jumlah_kali_lokasi, "kali", harga_jasa_konsultasi_meteorologi_klimatologi, biaya_jasa_konsultasi_meteorologi_klimatologi],
 
-    ["2. Selama Operasi", "", "", "", "", "", ""],
+    ["2. Commissioning Instalasi Wahana Penyemai Awan Dari Darat", "", "", "", "", "", ""],
     ["     Uang Harian", jumlah_personel_komisioning_instalasi, "orang", jh_uh_komisioning_instalasi, "hari", uang_harian_luar_kota, uh_komisioning_instalasi],
     ["     Biaya Penginapan", jumlah_personel_komisioning_instalasi, "orang", jh_penginapan_komisioning_instalasi, "hari", harga_penginapan_ktg4, biaya_penginapan_komisioning_instalasi],
     ["     Biaya Tiket ", jumlah_personel_komisioning_instalasi, "orang", pp, "pp", biaya_tiket, biaya_tiket_komisioning_instalasi],
@@ -254,8 +254,8 @@ data = [
     ["      Perijinan Bahan Semai Flare untuk komisioning instalasi Menara GBG", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_perijinan_bahan_semai_flare, biaya_perijinan_bahan_semai_flare],
     ["      Sewa Kendaraan Survey Lokasi dan Komisioning Instalasi Menara GBG", jumlah_unit_kendaraan_keseluruhan, "unit", jh_keseluruhan+3, "hari", sewa_kendaraan, biaya_sewa_kendaraan_survey_lokasi_GBG],
 
-    ["C. Hasil Survey Lokasi dan Instalasi", "", "", "", "", "", ""],
-    ["Pencetakan dan Penggandaan Laporan", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_pencetakan_dan_penggandaan_laporan, biaya_pencetakan_dan_penggandaan_laporan],
+    ["C. Hasil Survey Lokasi dan Commissioning Instalasi", "", "", "", "", "", ""],
+    ["Laporan pelaksanaan hasil survei", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_pencetakan_dan_penggandaan_laporan, biaya_pencetakan_dan_penggandaan_laporan],
 ]
 
 jumlah_total_biaya_survey_lokasi = sum(row[-1] for row in data if row[-1] != "")
