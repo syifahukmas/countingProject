@@ -163,9 +163,9 @@ biaya_jasa_konsultasi_kegiatan_perekayasaan = jasa_konsultasi_kegiatan_perekayas
 # ======================================================================= #
 # ==================== Perolehan data cuaca historis ==================== #
 # ======================================================================= #
-harga_perolehan_data_cuaca_historis = 20000000
+# harga_perolehan_data_cuaca_historis = 20000000
 
-biaya_perolehan_data_cuaca_historis = perolehan_data_cuaca_historis(jumlah_paket, jumlah_kali_paket, harga_perolehan_data_cuaca_historis)
+# biaya_perolehan_data_cuaca_historis = perolehan_data_cuaca_historis(jumlah_paket, jumlah_kali_paket, harga_perolehan_data_cuaca_historis)
 
 # ============================================================ #
 # ==================== Sistem Teleburning ==================== #
@@ -247,7 +247,6 @@ data = [
     ["     Taksi", jumlah_personel_penyusun_laporan_akhir, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_penyusun_laporan_akhir],
 
     ["B. Sarana dan Prasarana", "", "", "", "", "", ""],
-    ["      Perolehan data cuaca historis", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_perolehan_data_cuaca_historis, biaya_perolehan_data_cuaca_historis],
     ["      Sistem Teleburning", jumlah_unit_sistem_teleburning, "unit", jumlah_kali_paket, "kali", harga_sistem_teleburning, biaya_sistem_teleburning],
     ["      Balon Pibal", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_balon_pibal, biaya_balon_pibal],
     ["      Bahan Semai Flare untuk komisioning instalasi Menara GBG", jumlah_pcs, "pcs", jumlah_kali_paket, "hari", harga_bahan_semai_flare, biaya_bahan_semai_flare],
