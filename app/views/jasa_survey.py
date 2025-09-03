@@ -26,7 +26,7 @@ st.subheader("Layanan Jasa Survey Lokasi dan Comissioning")
 # =================================================== #
 # ==================== Baca Data ==================== #
 # =================================================== #
-df = pd.read_excel("database/data_gabungan_sdm1.xlsx", header=1) 
+df = pd.read_excel("database/data_gabungan_sdm2.xlsx", header=1) 
 
 # ==================================================== #
 # ==================== Input Data ==================== #
