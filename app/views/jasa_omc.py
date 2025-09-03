@@ -67,7 +67,7 @@ provinsi = st.selectbox(
     "Tempat Pelaksanaan (Provinsi)",
     [
         "Aceh","Sumatera Utara","Sumatera Barat","Riau","Jambi","Sumatera Selatan",
-        "Bengkulu","Lampung","Kepulauan Bangka Belitung","Kepulauan Riau","DKI Jakarta",
+        "Bengkulu","Lampung","Bangka Belitung","Kepulauan Riau","DKI Jakarta",
         "Jawa Barat","Jawa Tengah","DI Yogyakarta","Jawa Timur","Banten","Bali",
         "Nusa Tenggara Barat","Nusa Tenggara Timur","Kalimantan Barat","Kalimantan Tengah",
         "Kalimantan Selatan","Kalimantan Timur","Kalimantan Utara","Sulawesi Utara",
