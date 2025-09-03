@@ -123,8 +123,8 @@ jh_penginapan_komisioning_instalasi = jh_uh_komisioning_instalasi-1
 jh_penginapan_penyusun_laporan_akhir = jh_uh_penyusun_laporan_akhir-1
 
 # Biaya Penginapan Kategori III
-biaya_penginapan_survey_lokasi = biaya_penginapan(harga_penginapan_ktg3, jh_penginapan_survey_lokasi, jumlah_personel_survey_lokasi)
-biaya_penginapan_komisioning_instalasi = biaya_penginapan(harga_penginapan_ktg3, jh_penginapan_komisioning_instalasi, jumlah_personel_komisioning_instalasi)
+biaya_penginapan_survey_lokasi = biaya_penginapan(harga_penginapan_ktg4, jh_penginapan_survey_lokasi, jumlah_personel_survey_lokasi)
+biaya_penginapan_komisioning_instalasi = biaya_penginapan(harga_penginapan_ktg4, jh_penginapan_komisioning_instalasi, jumlah_personel_komisioning_instalasi)
 
 # Biaya Penginapan Khusus
 biaya_penginapan_penyusun_laporan_akhir = biaya_penginapan(harga_penginapan_khusus, jh_penginapan_penyusun_laporan_akhir, jumlah_personel_penyusun_laporan_akhir)
@@ -229,7 +229,7 @@ data = [
 
     ["1. Survey Lokasi Wahana Penyemai Awan dari Darat", "", "", "", "", "", ""],
     ["     Uang Harian", jumlah_personel_survey_lokasi, "orang", jh_uh_survey_lokasi, "hari", uang_harian_luar_kota, uh_survey_lokasi],
-    ["     Biaya Penginapan", jumlah_personel_survey_lokasi, "orang", jh_penginapan_survey_lokasi, "hari", harga_penginapan_ktg3, biaya_penginapan_survey_lokasi],
+    ["     Biaya Penginapan", jumlah_personel_survey_lokasi, "orang", jh_penginapan_survey_lokasi, "hari", harga_penginapan_ktg4, biaya_penginapan_survey_lokasi],
     ["     Biaya Tiket ", jumlah_personel_survey_lokasi, "orang", pp, "pp", biaya_tiket, biaya_tiket_survey_lokasi],
     ["     Taksi", jumlah_personel_survey_lokasi, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_survey_lokasi],
     ["     Jasa Konsultasi Meteorologi dan Klimatologi", jumlah_lokasi, "lokasi", jumlah_kali_lokasi, "kali", harga_jasa_konsultasi_meteorologi_klimatologi, biaya_jasa_konsultasi_meteorologi_klimatologi],
