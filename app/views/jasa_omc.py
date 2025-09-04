@@ -96,15 +96,15 @@ if jenis_pesawat == "Sewa Pesawat Swasta":
     )
     # Input Jumlah Personel OMC
     jumlah_personel_keseluruhan = st.number_input(
-        "Jumlah Personel OMC (minimal 30)",
-        min_value=30, step=1, value=30
+        "Jumlah Personel OMC (minimal 40)",
+        min_value=40, step=1, value=40
     )
 
 elif jenis_pesawat == "Pesawat TNI":
     # Input Jumlah Personel OMC
     jumlah_personel_keseluruhan = st.number_input(
-        "Jumlah Personel OMC (minimal 30)",
-        min_value=30, step=1, value=30
+        "Jumlah Personel OMC (minimal 40)",
+        min_value=40, step=1, value=40
     )
     # Input Jumlah Personel TNI
     jumlah_kru_pesawat_TNI = st.number_input(
@@ -295,10 +295,6 @@ jam_terbang_total = jam_terbang_operasi * jh_keseluruhan
 harga_paket_modifikasi_inspeksi = 140000000
 biaya_modifikasi_dan_inspeksi_pesawat = modifikasi_dan_inspeksi_pesawat(harga_paket_modifikasi_inspeksi, jumlah_paket, jumlah_kali_paket)
 
-# ================ Biaya Sewa Per jam (Pesawat Swasta) ================ #
-harga_sewa_per_jam = 70000000
-jam_terbang_operasi, biaya_harga_sewa_pesawat = harga_sewa_pesawat(jenis_operasi, jh_keseluruhan, harga_sewa_per_jam)
-
 # =================== Kebutuhan Operasional Lapangan ==================== #
 # ========== Sewa Kendaraan ========== #
 # Variabel sewa kendaraan
@@ -389,13 +385,13 @@ if jenis_pesawat == "Pesawat TNI":
     ]
 
 # lanjutkan dengan Tim Pengawas, Supervisi, dll...
-# data += [
-#     ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
-#     ["Uang Harian", jumlah_personel_tim_pengawas, "orang", jh_uh_tim_pengawas, "hari", uang_harian_luar_kota, uh_tim_pengawas],
-#     ["Biaya Penginapan", jumlah_personel_tim_pengawas, "orang", jh_penginapan_tim_pengawas, "hari", harga_penginapan_ktg4, biaya_penginapan_tim_pengawas],
-#     ["Biaya Tiket", jumlah_personel_tim_pengawas, "orang", pp, "pp", biaya_tiket, biaya_tiket_tim_pengawas],
-#     ["Taksi", jumlah_personel_tim_pengawas, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_tim_pengawas],
-# ]
+data += [
+    ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
+    ["Uang Harian", jumlah_personel_tim_pengawas, "orang", jh_uh_tim_pengawas, "hari", uang_harian_luar_kota, uh_tim_pengawas],
+    ["Biaya Penginapan", jumlah_personel_tim_pengawas, "orang", jh_penginapan_tim_pengawas, "hari", harga_penginapan_ktg4, biaya_penginapan_tim_pengawas],
+    ["Biaya Tiket", jumlah_personel_tim_pengawas, "orang", pp, "pp", biaya_tiket, biaya_tiket_tim_pengawas],
+    ["Taksi", jumlah_personel_tim_pengawas, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_tim_pengawas],
+]
 
 data += [
     ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
@@ -430,24 +426,10 @@ data += [
 
     ["B. Sarana dan Prasarana", "", "", "", "", "", ""],
     ["1. Bahan Semai", jumlah_kg, "Kg", jh_keseluruhan, "hari", harga_per_kg, biaya_harga_bahan_semai_NaCl],
-]
-
-if jenis_pesawat == "Pesawat TNI":
-    data += [
-        ["2. Alutsista Pesawat TNI", "", "", "", "", "", ""],
-        ["a. Penggantian Avtur untuk Mob - Demob", jam_mobdemob, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_penggantian_avtur_pesawat],
-        ["b. Selama Operasi", jam_terbang_total, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_alutsista_pesawat_selama_operasi],
-        ["c. Modifikasi dan inspeksi pesawat before - after rain making ", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_paket_modifikasi_inspeksi, biaya_modifikasi_dan_inspeksi_pesawat],
-    ]
-
-if jenis_pesawat == "Sewa Pesawat Swasta":
-    data += [
-        ["2. Sewa Pesawat", "", "", "", "", "", ""],
-        ["a. Mobilisasi - Demobilisasi Pesawat", jam_mobdemob, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_penggantian_avtur_pesawat],
-        ["b. Selama Operasi", jam_terbang_operasi, "jam", jh_keseluruhan, "hari", harga_sewa_per_jam, biaya_harga_sewa_pesawat],
-    ]
-    
-data += [
+    ["2. Alutsista Pesawat TNI", "", "", "", "", "", ""],
+    ["a. Penggantian Avtur untuk Mob - Demob", jam_mobdemob, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_penggantian_avtur_pesawat],
+    ["b. Selama Operasi", jam_terbang_total, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_alutsista_pesawat_selama_operasi],
+    ["c. Modifikasi dan inspeksi pesawat before - after rain making ", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_paket_modifikasi_inspeksi, biaya_modifikasi_dan_inspeksi_pesawat],
     ["3. Kebutuhan Operasional Lapangan", "", "", "", "", "", ""],
     ["a. Sewa Kendaraan", "", "", "", "", "", ""],
     ["     Sebelum Operasi", unit_kendaraan_sebelum_operasi, "unit", jh_sewa_kendaraan_sebelum_setelah_operasi, "hari", sewa_kendaraan, biaya_sewa_kendaraan_sebelum_operasi],
