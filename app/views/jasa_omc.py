@@ -385,13 +385,6 @@ if jenis_pesawat == "Pesawat TNI":
     ]
 
 # lanjutkan dengan Tim Pengawas, Supervisi, dll...
-data += [
-    ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
-    ["Uang Harian", jumlah_personel_tim_pengawas, "orang", jh_uh_tim_pengawas, "hari", uang_harian_luar_kota, uh_tim_pengawas],
-    ["Biaya Penginapan", jumlah_personel_tim_pengawas, "orang", jh_penginapan_tim_pengawas, "hari", harga_penginapan_ktg4, biaya_penginapan_tim_pengawas],
-    ["Biaya Tiket", jumlah_personel_tim_pengawas, "orang", pp, "pp", biaya_tiket, biaya_tiket_tim_pengawas],
-    ["Taksi", jumlah_personel_tim_pengawas, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_tim_pengawas],
-]
 
 data += [
     ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
