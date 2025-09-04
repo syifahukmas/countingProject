@@ -161,6 +161,13 @@ row = df[df['PROVINSI'] == provinsi]
 if row.empty:
     st.error(f"Provinsi '{provinsi}' tidak ditemukan di data Excel!")
     st.stop()
+def harga_sewa_pesawat(input_operasi, jh_keseluruhan, harga_sewa_per_jam):
+    if input_operasi == "Kondisi Tertentu/Khusus (Operasi 24 Jam)":
+        jam_terbang = 6
+    else:
+        jam_terbang = 3
+    jumlah_alutsista_pesawat = jam_terbang * jh_keseluruhan * harga_sewa_per_jam
+    return jam_terbang, jumlah_alutsista_pesawat
 
 # ===================================================== #
 # ==================== Uang Harian ==================== #
