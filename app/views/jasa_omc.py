@@ -295,6 +295,11 @@ jam_terbang_total = jam_terbang_operasi * jh_keseluruhan
 harga_paket_modifikasi_inspeksi = 140000000
 biaya_modifikasi_dan_inspeksi_pesawat = modifikasi_dan_inspeksi_pesawat(harga_paket_modifikasi_inspeksi, jumlah_paket, jumlah_kali_paket)
 
+# ================ Biaya Sewa Per jam (Pesawat Swasta) ================ #
+harga_sewa_per_jam = 70000000
+jam_terbang_operasi, biaya_harga_sewa_pesawat = harga_sewa_pesawat(jenis_operasi, jh_keseluruhan, harga_sewa_per_jam)
+harga_mobdemob = harga_sewa_per_jam * jam_mobdemob
+
 # =================== Kebutuhan Operasional Lapangan ==================== #
 # ========== Sewa Kendaraan ========== #
 # Variabel sewa kendaraan
@@ -419,10 +424,24 @@ data += [
 
     ["B. Sarana dan Prasarana", "", "", "", "", "", ""],
     ["1. Bahan Semai", jumlah_kg, "Kg", jh_keseluruhan, "hari", harga_per_kg, biaya_harga_bahan_semai_NaCl],
-    ["2. Alutsista Pesawat TNI", "", "", "", "", "", ""],
-    ["a. Penggantian Avtur untuk Mob - Demob", jam_mobdemob, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_penggantian_avtur_pesawat],
-    ["b. Selama Operasi", jam_terbang_total, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_alutsista_pesawat_selama_operasi],
-    ["c. Modifikasi dan inspeksi pesawat before - after rain making ", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_paket_modifikasi_inspeksi, biaya_modifikasi_dan_inspeksi_pesawat],
+]
+   
+if jenis_pesawat == "Pesawat TNI":
+    data += [
+        ["2. Alutsista Pesawat TNI", "", "", "", "", "", ""],
+        ["a. Penggantian Avtur untuk Mob - Demob", jam_mobdemob, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_penggantian_avtur_pesawat],
+        ["b. Selama Operasi", jam_terbang_total, "jam", jumlah_liter, "liter", harga_avtur_per_liter, biaya_alutsista_pesawat_selama_operasi],
+        ["c. Modifikasi dan inspeksi pesawat before - after rain making ", jumlah_paket, "paket", jumlah_kali_paket, "kali", harga_paket_modifikasi_inspeksi, biaya_modifikasi_dan_inspeksi_pesawat],
+    ]
+
+if jenis_pesawat == "Sewa Pesawat Swasta":
+    data += [
+        ["2. Sewa Pesawat", "", "", "", "", "", ""],
+        ["a. Mobilisasi - Demobilisasi Pesawat", jam_mobdemob, "jam", p, "P", harga_sewa_per_jam, harga_mobdemob],
+        ["b. Selama Operasi", jam_terbang_operasi, "jam", jh_keseluruhan, "hari", harga_sewa_per_jam, biaya_harga_sewa_pesawat],
+    ]
+
+data += [  
     ["3. Kebutuhan Operasional Lapangan", "", "", "", "", "", ""],
     ["a. Sewa Kendaraan", "", "", "", "", "", ""],
     ["     Sebelum Operasi", unit_kendaraan_sebelum_operasi, "unit", jh_sewa_kendaraan_sebelum_setelah_operasi, "hari", sewa_kendaraan, biaya_sewa_kendaraan_sebelum_operasi],
