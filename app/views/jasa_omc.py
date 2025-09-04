@@ -298,6 +298,7 @@ biaya_modifikasi_dan_inspeksi_pesawat = modifikasi_dan_inspeksi_pesawat(harga_pa
 # ================ Biaya Sewa Per jam (Pesawat Swasta) ================ #
 harga_sewa_per_jam = 70000000
 jam_terbang_operasi, biaya_harga_sewa_pesawat = harga_sewa_pesawat(jenis_operasi, jh_keseluruhan, harga_sewa_per_jam)
+
 harga_mobdemob = harga_sewa_per_jam * jam_mobdemob
 # =================== Kebutuhan Operasional Lapangan ==================== #
 # ========== Sewa Kendaraan ========== #
