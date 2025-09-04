@@ -299,7 +299,6 @@ biaya_modifikasi_dan_inspeksi_pesawat = modifikasi_dan_inspeksi_pesawat(harga_pa
 harga_sewa_per_jam = 70000000
 jam_terbang_operasi, biaya_harga_sewa_pesawat = harga_sewa_pesawat(jenis_operasi, jh_keseluruhan, harga_sewa_per_jam)
 harga_mobdemob = harga_sewa_per_jam * jam_mobdemob
-
 # =================== Kebutuhan Operasional Lapangan ==================== #
 # ========== Sewa Kendaraan ========== #
 # Variabel sewa kendaraan
@@ -390,6 +389,13 @@ if jenis_pesawat == "Pesawat TNI":
     ]
 
 # lanjutkan dengan Tim Pengawas, Supervisi, dll...
+# data += [
+#     ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
+#     ["Uang Harian", jumlah_personel_tim_pengawas, "orang", jh_uh_tim_pengawas, "hari", uang_harian_luar_kota, uh_tim_pengawas],
+#     ["Biaya Penginapan", jumlah_personel_tim_pengawas, "orang", jh_penginapan_tim_pengawas, "hari", harga_penginapan_ktg4, biaya_penginapan_tim_pengawas],
+#     ["Biaya Tiket", jumlah_personel_tim_pengawas, "orang", pp, "pp", biaya_tiket, biaya_tiket_tim_pengawas],
+#     ["Taksi", jumlah_personel_tim_pengawas, "orang", pp, "pp", harga_taksi_flat, biaya_taksi_tim_pengawas],
+# ]
 
 data += [
     ["2.3. Tim Pengawas (Inspektorat/APIP), Humas", "", "", "", "", "", ""],
@@ -425,7 +431,7 @@ data += [
     ["B. Sarana dan Prasarana", "", "", "", "", "", ""],
     ["1. Bahan Semai", jumlah_kg, "Kg", jh_keseluruhan, "hari", harga_per_kg, biaya_harga_bahan_semai_NaCl],
 ]
-   
+
 if jenis_pesawat == "Pesawat TNI":
     data += [
         ["2. Alutsista Pesawat TNI", "", "", "", "", "", ""],
@@ -441,7 +447,7 @@ if jenis_pesawat == "Sewa Pesawat Swasta":
         ["b. Selama Operasi", jam_terbang_operasi, "jam", jh_keseluruhan, "hari", harga_sewa_per_jam, biaya_harga_sewa_pesawat],
     ]
 
-data += [  
+data += [
     ["3. Kebutuhan Operasional Lapangan", "", "", "", "", "", ""],
     ["a. Sewa Kendaraan", "", "", "", "", "", ""],
     ["     Sebelum Operasi", unit_kendaraan_sebelum_operasi, "unit", jh_sewa_kendaraan_sebelum_setelah_operasi, "hari", sewa_kendaraan, biaya_sewa_kendaraan_sebelum_operasi],
