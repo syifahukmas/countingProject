@@ -200,7 +200,7 @@ df_out = pd.DataFrame(data, columns=[
 
 # Simpan ke Excel
 
-jumlah_harian = jumlah_total_biaya_omc / jh_keseluruhan
+jumlah_harian = jumlah_total_biaya_omc / jumlah_input_hari
 
 # buat baris ringkasan
 summary_rows = pd.DataFrame([
