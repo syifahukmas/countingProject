@@ -17,6 +17,7 @@ def safe_divide(a, b):
 # ==================== Fungsi Universal ==================== #
 # ========================================================== #
 harga_sewa_per_jam = 70000000
+
 def harga_sewa_pesawat(input_operasi, jh_keseluruhan, harga_sewa_per_jam):
     if input_operasi == "Kondisi Tertentu/Khusus (Operasi 24 Jam)":
         jam_terbang = 6
