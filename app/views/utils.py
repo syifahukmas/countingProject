@@ -67,15 +67,6 @@ def alutsista_pesawat_selama_operasi(input_operasi, jh_keseluruhan, jumlah_liter
     jumlah_alutsista_pesawat = jam_terbang * jh_keseluruhan * jumlah_liter * harga_avtur_per_liter
     return jam_terbang, jumlah_alutsista_pesawat
 
-# Fungsi Harga Sewa Pesawat per Jam
-def harga_sewa_pesawat(input_operasi, jh_keseluruhan, harga_sewa_per_jam):
-    if input_operasi == "Kondisi Tertentu/Khusus (Operasi 24 Jam)":
-        jam_terbang = 6
-    else:
-        jam_terbang = 3
-    jumlah_alutsista_pesawat = jam_terbang * jh_keseluruhan * harga_sewa_per_jam
-    return jam_terbang, jumlah_alutsista_pesawat
-
 # Biaya Modifikasi dan Inspeksi Pesawat
 def modifikasi_dan_inspeksi_pesawat(harga_paket_modifikasi_inspeksi, jumlah_paket, jumlah_kali_paket): 
     return harga_paket_modifikasi_inspeksi * jumlah_paket * jumlah_kali_paket
